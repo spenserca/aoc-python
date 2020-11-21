@@ -7,3 +7,4 @@ if __name__ == "__main__":
     print("--------------------------------------")
     print("DAY TWO PART ONE: ", day_two_part_one())
     print("DAY TWO PART TWO: ", day_two_part_two())
+    print("--------------------------------------")
