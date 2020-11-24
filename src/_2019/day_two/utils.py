@@ -1,5 +1,3 @@
-
-
 def get_value_at_address_zero_after_processing(initial_memory_state: [int]):
     instruction_pointer = 0
     op_code = initial_memory_state[instruction_pointer]

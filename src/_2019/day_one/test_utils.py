@@ -1,4 +1,4 @@
-from day_one.utils import calculate_required_fuel_for_mass, calculate_total_required_fuel_for_modules, \
+from _2019.day_one.utils import calculate_required_fuel_for_mass, calculate_total_required_fuel_for_modules, \
     calculate_required_fuel_for_module_plus_fuel, calculate_total_required_fuel_for_modules_and_fuel
 
 

@@ -1,4 +1,4 @@
-from day_two.utils import get_value_at_address_zero_after_processing
+from _2019.day_two.utils import get_value_at_address_zero_after_processing
 
 
 def test_get_position_zero_after_processing_returns_2_for_given_input():
