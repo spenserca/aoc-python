@@ -1,5 +1,6 @@
-from day_one.utils import calculate_total_required_fuel_for_modules, calculate_total_required_fuel_for_modules_and_fuel
-from utils.input_utils import get_lines_from_file
+from _2019.day_one.utils import calculate_total_required_fuel_for_modules, \
+    calculate_total_required_fuel_for_modules_and_fuel
+from _2019.utils.input_utils import get_lines_from_file
 
 
 def get_module_masses():

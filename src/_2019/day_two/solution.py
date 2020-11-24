@@ -1,5 +1,5 @@
-from day_two.utils import get_value_at_address_zero_after_processing
-from utils.input_utils import get_lines_from_file
+from _2019.day_two.utils import get_value_at_address_zero_after_processing
+from _2019.utils.input_utils import get_lines_from_file
 
 
 def get_initial_memory_state(noun: int, verb: int):
