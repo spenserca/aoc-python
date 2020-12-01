@@ -12,6 +12,8 @@ src/configs/PFG_ROOT_CA
 docker/database/data
 docker/localstack/data
 
+out
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
