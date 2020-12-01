@@ -9,5 +9,5 @@ def test_get_product_of_2_values_summing_to_2020_returns_514579_for_input():
 
 def test_get_product_of_3_values_summing_to_2020_returns_241861950_for_input():
     expense_report = [1721, 979, 366, 299, 675, 1456]
-    actual = get_product_of_3_values_summing_to_2020(expense_report, 3)
+    actual = get_product_of_3_values_summing_to_2020(expense_report)
     assert actual == 241861950
