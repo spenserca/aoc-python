@@ -22,4 +22,5 @@ if __name__ == "__main__":
     print("2020 - DAY THREE PART TWO: ", _2020.day_three.solution.day_three_part_two())
     print_line_break()
     print("2020 - DAY FOUR PART ONE: ", _2020.day_four.solution.day_four_part_one())
+    print("2020 - DAY FOUR PART TWO: ", _2020.day_four.solution.day_four_part_two())
     print_line_break()

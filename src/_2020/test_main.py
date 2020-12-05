@@ -37,3 +37,8 @@ def test_2020_day_three_part_two_returns_correct_values():
 def test_2020_day_four_part_one_returns_correct_values():
     actual = _2020.day_four.solution.day_four_part_one()
     assert actual == 182
+
+
+def test_2020_day_four_part_two_returns_correct_values():
+    actual = _2020.day_four.solution.day_four_part_two()
+    assert actual == 109
