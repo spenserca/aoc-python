@@ -59,3 +59,8 @@ def test_2020_day_five_part_two_returns_correct_values():
 def test_2020_day_six_part_one_returns_correct_values():
     actual = _2020.day_six.solution.day_six_part_one()
     assert actual == 6726
+
+
+def test_2020_day_six_part_two_returns_correct_values():
+    actual = _2020.day_six.solution.day_six_part_two()
+    assert actual == 3316
