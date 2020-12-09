@@ -2,11 +2,11 @@ import re
 
 
 def get_all_parents(child_parent_graph: dict, bag_type: str):
-    parents = child_parent_graph[bag_type]
+    parents = set(child_parent_graph[bag_type])
     for parent in child_parent_graph[bag_type]:
-        parents += get_all_parents(child_parent_graph, parent)
+        parents |= get_all_parents(child_parent_graph, parent)
 
-    return set(parents)
+    return parents
 
 
 def build_child_to_parent_graph(bag_rules):
