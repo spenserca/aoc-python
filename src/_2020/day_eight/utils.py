@@ -39,9 +39,15 @@ class HandheldGame:
         return self.boot_code[self.current_instruction]
 
     def run_game(self):
+        # while not in an infinite loop
+        while self.current_instruction not in self.processed_instructions:
+            self.process_instruction()
+
+        return self.accumulator
+
+    def process_instruction(self):
         instruction = self.get_current_instruction()
         self.parse_instruction(instruction)
-
         if self.current_operation == 'acc':
             self.handle_acc_instruction()
         elif self.current_operation == 'jmp':
@@ -53,22 +59,28 @@ class HandheldGame:
 def get_accumulator_value_after_one_loop(boot_code: [str]):
     handheld_game = HandheldGame(boot_code)
 
-    while handheld_game.current_instruction not in handheld_game.processed_instructions:
-        handheld_game.run_game()
-
-    return handheld_game.accumulator
+    return handheld_game.run_game()
 
 
 def get_accumulator_value_after_termination(boot_code: [str]):
+    modified_instructions = []
     # find first nop/jmp instruction index not in changed instructions list
-        # add index to list of changed instructions list
-        # flip instruction to the opposite instruction
+    for i in range(len(boot_code)):
+        modified_boot_code = boot_code
+        if i not in modified_instructions:
+            modified_instructions.append(i)
+            instruction = modified_boot_code[i]
+            if 'jmp' in instruction:
+                instruction = instruction.replace('jmp', 'nop')
+                modified_boot_code[i] = instruction
+            if 'nop' in instruction:
+                instruction = instruction.replace('nop', 'jmp')
+                modified_boot_code[i] = instruction
 
-    # create new handheld game with modified boot code
-    handheld_game = HandheldGame(boot_code)
+        # create new handheld game with modified boot code
+        handheld_game = HandheldGame(modified_boot_code)
 
-    # while current instruction has not been processed already
-        # if current instruction is equal to the length of boot code we ran successfully
-            # return handheld_game.accumulator
+        handheld_game.run_game()
 
-    return handheld_game.accumulator
+        if handheld_game.current_instruction == len(modified_boot_code):
+            return handheld_game.accumulator
