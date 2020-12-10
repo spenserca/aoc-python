@@ -60,33 +60,15 @@ def get_accumulator_value_after_one_loop(boot_code: [str]):
 
 
 def get_accumulator_value_after_termination(boot_code: [str]):
-    accumulator = 0
-    current_instruction = 0
-    terminate_instruction = len(boot_code)
-    visited_instructions = []
-    toggled_op_instructions = []
+    # find first nop/jmp instruction index not in changed instructions list
+        # add index to list of changed instructions list
+        # flip instruction to the opposite instruction
 
-    while current_instruction not in visited_instructions:
-        instruction = boot_code[current_instruction]
-        visited_instructions.append(current_instruction)
-        op, str_arg = instruction.split(' ')
-        arg = int(str_arg)
+    # create new handheld game with modified boot code
+    handheld_game = HandheldGame(boot_code)
 
-        if op == 'acc':
-            accumulator += arg
-            current_instruction += 1
-        elif op == 'jmp':
-            if arg > 0:
-                if current_instruction + arg > len(boot_code):
-                    current_instruction = ((current_instruction + arg) - len(boot_code)) - 1
-                else:
-                    current_instruction += arg
-            if arg < 0:
-                if current_instruction + arg < 0:
-                    current_instruction = len(boot_code) - abs(current_instruction + arg)
-                else:
-                    current_instruction += arg
-        elif op == 'nop':
-            current_instruction += 1
+    # while current instruction has not been processed already
+        # if current instruction is equal to the length of boot code we ran successfully
+            # return handheld_game.accumulator
 
-    return accumulator
+    return handheld_game.accumulator
