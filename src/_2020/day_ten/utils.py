@@ -1,8 +1,8 @@
 from math import prod
 
 
-def get_product_of_one_and_three_jolt_differences(output_joltage: [str]):
-    joltages = sorted([int(oj) for oj in output_joltage])
+def get_product_of_one_and_three_jolt_differences(output_joltages: [str]):
+    joltages = sorted([int(oj) for oj in output_joltages])
     current_connector_joltage_rating = 0
 
     joltage_distribution = [0, 1]
@@ -17,3 +17,7 @@ def get_product_of_one_and_three_jolt_differences(output_joltage: [str]):
             current_connector_joltage_rating = joltage
 
     return prod(joltage_distribution)
+
+
+def get_count_of_distinct_adapter_configurations(output_joltages: [str]):
+    return -1
