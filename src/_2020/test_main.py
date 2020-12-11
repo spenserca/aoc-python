@@ -1,6 +1,7 @@
 import _2020.day_eight.solution
 import _2020.day_five.solution
 import _2020.day_four.solution
+import _2020.day_nine.solution
 import _2020.day_one.solution
 import _2020.day_seven.solution
 import _2020.day_six.solution
@@ -81,3 +82,13 @@ def test_2020_day_seven_part_two_returns_correct_values():
 def test_2020_day_eight_part_one_returns_correct_values():
     actual = _2020.day_eight.solution.day_eight_part_one()
     assert actual == 1200
+
+
+def test_2020_day_eight_part_two_returns_correct_values():
+    actual = _2020.day_eight.solution.day_eight_part_two()
+    assert actual == 1023
+
+
+def test_2020_day_nine_part_one_returns_correct_values():
+    actual = _2020.day_nine.solution.day_nine_part_one()
+    assert actual == 14360655
