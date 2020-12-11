@@ -6,6 +6,7 @@ class HandheldGame:
         self.current_instruction = 0
         self.current_operation = ''
         self.current_arg = 0
+        self.terminated = False
 
     def parse_instruction(self, instruction: str):
         op, str_arg = instruction.split(' ')
@@ -20,16 +21,7 @@ class HandheldGame:
         self.accumulator += self.current_arg
 
     def handle_jmp_instruction(self):
-        if self.current_arg > 0:
-            if self.current_instruction + self.current_arg > len(self.boot_code):
-                self.current_instruction = ((self.current_instruction + self.current_arg) - len(self.boot_code)) - 1
-            else:
-                self.current_instruction += self.current_arg
-        if self.current_arg < 0:
-            if self.current_instruction + self.current_arg < 0:
-                self.current_instruction = len(self.boot_code) - abs(self.current_instruction + self.current_arg)
-            else:
-                self.current_instruction += self.current_arg
+        self.current_instruction += self.current_arg
 
     def handle_nop_instruction(self):
         self.current_instruction += 1
@@ -39,8 +31,7 @@ class HandheldGame:
         return self.boot_code[self.current_instruction]
 
     def run_game(self):
-        # while not in an infinite loop
-        while self.current_instruction not in self.processed_instructions:
+        while self.current_instruction not in self.processed_instructions and not self.terminated:
             self.process_instruction()
 
         return self.accumulator
@@ -54,6 +45,8 @@ class HandheldGame:
             self.handle_jmp_instruction()
         elif self.current_operation == 'nop':
             self.handle_nop_instruction()
+        if self.current_instruction >= len(self.boot_code):
+            self.terminated = True
 
 
 def get_accumulator_value_after_one_loop(boot_code: [str]):
@@ -63,24 +56,24 @@ def get_accumulator_value_after_one_loop(boot_code: [str]):
 
 
 def get_accumulator_value_after_termination(boot_code: [str]):
-    modified_instructions = []
-    # find first nop/jmp instruction index not in changed instructions list
-    for i in range(len(boot_code)):
-        modified_boot_code = boot_code
-        if i not in modified_instructions:
-            modified_instructions.append(i)
-            instruction = modified_boot_code[i]
-            if 'jmp' in instruction:
-                instruction = instruction.replace('jmp', 'nop')
-                modified_boot_code[i] = instruction
-            if 'nop' in instruction:
-                instruction = instruction.replace('nop', 'jmp')
-                modified_boot_code[i] = instruction
+    i = 0
+    while i <= len(boot_code):
+        instruction = boot_code[i]
+        original_op, arg = instruction.split(' ')
+        modified_op = 'acc'
+        if original_op == 'nop':
+            modified_op = 'jmp'
+        elif original_op == 'jmp':
+            modified_op = 'nop'
 
-        # create new handheld game with modified boot code
-        handheld_game = HandheldGame(modified_boot_code)
+        boot_code[i] = modified_op + ' ' + arg
+
+        handheld_game = HandheldGame(boot_code)
 
         handheld_game.run_game()
 
-        if handheld_game.current_instruction == len(modified_boot_code):
+        if handheld_game.terminated:
             return handheld_game.accumulator
+
+        boot_code[i] = instruction
+        i += 1
