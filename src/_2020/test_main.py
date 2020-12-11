@@ -92,3 +92,8 @@ def test_2020_day_eight_part_two_returns_correct_values():
 def test_2020_day_nine_part_one_returns_correct_values():
     actual = _2020.day_nine.solution.day_nine_part_one()
     assert actual == 14360655
+
+
+def test_2020_day_nine_part_two_returns_correct_values():
+    actual = _2020.day_nine.solution.day_nine_part_two()
+    assert actual == 1962331
