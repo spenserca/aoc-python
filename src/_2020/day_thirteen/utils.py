@@ -17,3 +17,13 @@ def find_earliest_bus_to_take(notes: [str]):
 
     minimum_wait_time = min(bus_wait_times.keys())
     return minimum_wait_time * bus_wait_times[minimum_wait_time]
+
+
+def find_earliest_timestamp_with_bus_departures_at_offset(notes: [str]):
+    bus_ids = notes[1].split(',')
+    t = 1
+    next_departure_times = []
+
+
+
+    return -1
