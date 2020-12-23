@@ -18,7 +18,7 @@ def get_product_of_one_and_three_jolt_differences(output_joltages: [str]):
 
     return prod(joltage_distribution)
 
-#  1962331 too low
+
 def get_count_of_distinct_adapter_configurations(output_joltages: [str]):
     joltages = sorted([int(oj) for oj in output_joltages])
     current_connector_joltage_rating = 0
@@ -26,7 +26,7 @@ def get_count_of_distinct_adapter_configurations(output_joltages: [str]):
     adapter_configurations = dict()
     i = 0
     while i <= len(joltages):
-        valid_adapters = list(filter(lambda j: j - current_connector_joltage_rating <= 3, joltages[i:i + 3]))
+        valid_adapters = [j for j in joltages[i:i + 3] if j - current_connector_joltage_rating <= 3]
 
         if i != len(joltages):
             adapter_configurations[current_connector_joltage_rating] = valid_adapters
