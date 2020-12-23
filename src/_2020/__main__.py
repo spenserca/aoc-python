@@ -1,5 +1,6 @@
 import _2020.day_eight.solution
 import _2020.day_eleven.solution
+import _2020.day_fifteen.solution
 import _2020.day_five.solution
 import _2020.day_four.solution
 import _2020.day_nine.solution
@@ -58,6 +59,8 @@ if __name__ == "__main__":
     print("2020 - DAY TWELVE PART TWO: ", _2020.day_twelve.solution.day_twelve_part_two())
     print_line_break()
     print("2020 - DAY THIRTEEN PART ONE: ", _2020.day_thirteen.solution.day_thirteen_part_one())
+    print_line_break()
+    print("2020 - DAY FIFTEEN PART ONE: ", _2020.day_fifteen.solution.day_fifteen_part_one())
     print_line_break()
     print("2020 - DAY SIXTEEN PART ONE: ", _2020.day_sixteen.solution.day_sixteen_part_one())
     print_line_break()
