@@ -61,6 +61,7 @@ if __name__ == "__main__":
     print("2020 - DAY THIRTEEN PART ONE: ", _2020.day_thirteen.solution.day_thirteen_part_one())
     print_line_break()
     print("2020 - DAY FIFTEEN PART ONE: ", _2020.day_fifteen.solution.day_fifteen_part_one())
+    print("2020 - DAY FIFTEEN PART TWO: ", _2020.day_fifteen.solution.day_fifteen_part_two())
     print_line_break()
     print("2020 - DAY SIXTEEN PART ONE: ", _2020.day_sixteen.solution.day_sixteen_part_one())
     print_line_break()
